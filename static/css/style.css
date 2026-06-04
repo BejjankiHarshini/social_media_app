@@ -59,10 +59,28 @@ nav button {
     padding: 7px 14px;
     border-radius: 6px;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
 }
+
 .profile-img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+form {
+    margin-top: 15px;
 }
