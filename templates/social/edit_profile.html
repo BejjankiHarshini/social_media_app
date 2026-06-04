@@ -1,0 +1,14 @@
+{% extends 'social/base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Edit Profile</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button class="btn" type="submit">Save</button>
+    </form>
+</div>
+{% endblock %}

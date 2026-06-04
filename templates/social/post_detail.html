@@ -1,0 +1,51 @@
+{% extends 'social/base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Post Detail</h2>
+
+    <p>
+        <strong>
+            <a href="{% url 'profile' post.user.username %}">
+                {{ post.user.username }}
+            </a>
+        </strong>
+    </p>
+
+    {% if post.image %}
+        <img class="post-img" src="{{ post.image.url }}">
+    {% endif %}
+
+    <p>{{ post.caption }}</p>
+    <small>{{ post.created_at }}</small>
+
+    <p>Likes: {{ post.total_likes }}</p>
+
+    <a class="btn" href="{% url 'like_post' post.id %}">
+        Like / Unlike
+    </a>
+</div>
+
+<div class="card">
+    <h3>Add Comment</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button class="btn" type="submit">Comment</button>
+    </form>
+</div>
+
+<h3>Comments</h3>
+
+{% for comment in comments %}
+    <div class="card">
+        <strong>{{ comment.user.username }}</strong>
+        <p>{{ comment.text }}</p>
+        <small>{{ comment.created_at }}</small>
+    </div>
+{% empty %}
+    <p>No comments yet.</p>
+{% endfor %}
+{% endblock %}
